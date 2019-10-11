@@ -1,4 +1,4 @@
-const dadosParalisadasAtrasadas = require('./dados/atrasadas-paralisadas');
+const dadosParalisadasAtrasadas = require('./dados-extraidos/atrasadas-paralisadas.csv');
 
 const sumarizacao = {
     totalObras: 0,
@@ -16,17 +16,22 @@ const sumarizacao = {
 const atrasoPorTipo = {};
 
 dadosParalisadasAtrasadas.forEach(e => {
-    sumarizacao.totalObras += e.valor_inicial_contrato;
-    sumarizacao.totalPago += e.valor_total_pago;
+    sumarizacao.totalObras += Number(e.valor_inicial_contrato) || 0;
+    sumarizacao.totalPago += Number(e.valor_total_pago) || 0;
 
-    const pct = Math.round((e.valor_total_pago / e.valor_inicial_contrato) * 100) / 100;
-    sumarizacao.pctsConcluidos.push(pct);
+    const pct = Math.round((e.valor_total_pago / e.valor_inicial_contrato) * 10000) / 100;
+    sumarizacao.pctsConcluidos.push({
+        pct,
+        contratada: e.contratada,
+        classificacao: e.classificacao,
+        municipio_nome: e.municipio_nome
+    });
 
     if (pct <= 25) {
         sumarizacao.obrasPorFaixa['0-25']++;
-    } else if (pct <= 25) {
+    } else if (pct <= 50) {
         sumarizacao.obrasPorFaixa['26-50']++;
-    } else if (pct <= 25) {
+    } else if (pct <= 75) {
         sumarizacao.obrasPorFaixa['51-75']++;
     } else {
         sumarizacao.obrasPorFaixa['76-100']++;
@@ -36,7 +41,16 @@ dadosParalisadasAtrasadas.forEach(e => {
     atrasoPorTipo[e.classificacao].qtd++;
 });
 
-atr
+const pares = Object.values(atrasoPorTipo).sort((a, b) => - a.qtd + b.qtd);
+
+sumarizacao.atrasoPorTipo = pares;
+sumarizacao.pctsConcluidos = sumarizacao.pctsConcluidos.sort((a, b) => - a.pct + b.pct);
+sumarizacao.pctsConcluidos.forEach(e => {
+    e.pct = e.pct.toFixed(2) + '%';
+});
+
+sumarizacao.totalObras = 'R$ ' + sumarizacao.totalObras.toFixed(2).replace('.', ',');
+sumarizacao.totalPago = 'R$ ' + sumarizacao.totalPago.toFixed(2).replace('.', ',');
 
 require('fs').writeFileSync(
     'dados-extraidos/sumarizados.json',

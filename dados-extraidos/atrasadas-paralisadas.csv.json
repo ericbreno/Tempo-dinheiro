@@ -5808,22 +5808,6 @@
     "data_prevista_conclusao": "28/02/2019"
   },
   {
-    "municipio_nome": "Conchas",
-    "situacao_obra": "Atrasada",
-    "ambito": "Municipal",
-    "valor_inicial_contrato": 3,
-    "valor_total_pago": 137431.92,
-    "contratada": "KITA CONSTRUTORA LTDA EPP",
-    "cnpj_contratada": "61.600.094/0001-24",
-    "contratante": "PREFEITURA MUNICIPAL DE CONCHAS",
-    "classificacao": "Educação - Universidades, Faculdades, Escolas e similares",
-    "data_paralisacao": "Não informado",
-    "descricao_obra": "Ampliação da Escola Reineiro - Construção da Biblioteca",
-    "endereco": "Av. Elias Tomazela",
-    "url_obra": null,
-    "data_prevista_conclusao": "Não informado"
-  },
-  {
     "municipio_nome": "Coroados",
     "situacao_obra": "Atrasada",
     "ambito": "Municipal",
