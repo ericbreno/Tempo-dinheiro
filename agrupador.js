@@ -5,6 +5,10 @@ const sumarizacao = {
     totalPago: 0,
     pctsConcluidos: [],
     atrasoPorTipo: [],
+    atrasoPorMunicipioQtd: [],
+    atrasoPorMunicipioPago: [],
+    atrasoPorMunicipioPlanejado: [],
+    atrasoPorMunicipioValor: [],
     obrasPorFaixa: {
         '0-25': 0,
         '26-50': 0,
@@ -14,6 +18,7 @@ const sumarizacao = {
 };
 
 const atrasoPorTipo = {};
+const atrasoPorMunicipio = {};
 
 dadosParalisadasAtrasadas.forEach(e => {
     sumarizacao.totalObras += Number(e.valor_inicial_contrato) || 0;
@@ -39,11 +44,23 @@ dadosParalisadasAtrasadas.forEach(e => {
 
     atrasoPorTipo[e.classificacao] = atrasoPorTipo[e.classificacao] || { tipo: e.classificacao, qtd: 0 };
     atrasoPorTipo[e.classificacao].qtd++;
+
+    atrasoPorMunicipio[e.municipio_nome] = atrasoPorMunicipio[e.municipio_nome] || { municipio_nome: e.municipio_nome, qtd: 0, valor_inicial_contrato: 0, valor_total_pago: 0 };
+    atrasoPorMunicipio[e.municipio_nome].qtd++;
+    atrasoPorMunicipio[e.municipio_nome].valor_total_pago += e.valor_total_pago || 0;
+    atrasoPorMunicipio[e.municipio_nome].valor_inicial_contrato += e.valor_inicial_contrato || 0;
 });
 
-const pares = Object.values(atrasoPorTipo).sort((a, b) => - a.qtd + b.qtd);
+const paresTipos = Object.values(atrasoPorTipo).sort((a, b) => - a.qtd + b.qtd);
+const paresMunicipiosQtd = Object.values(atrasoPorMunicipio).sort((a, b) => - a.qtd + b.qtd);
+const paresMunicipiosPago = Object.values(atrasoPorMunicipio).sort((a, b) => - a.valor_total_pago + b.valor_total_pago);
+const paresMunicipiosPlanejado = Object.values(atrasoPorMunicipio).sort((a, b) => - a.valor_inicial_contrato + b.valor_inicial_contrato);
 
-sumarizacao.atrasoPorTipo = pares;
+sumarizacao.atrasoPorTipo = paresTipos;
+sumarizacao.atrasoPorMunicipioQtd = paresMunicipiosQtd;
+sumarizacao.atrasoPorMunicipioPago = paresMunicipiosPago;
+sumarizacao.atrasoPorMunicipioPlanejado = paresMunicipiosPlanejado;
+
 sumarizacao.pctsConcluidos = sumarizacao.pctsConcluidos.sort((a, b) => - a.pct + b.pct);
 sumarizacao.pctsConcluidos.forEach(e => {
     e.pct = e.pct.toFixed(2) + '%';
