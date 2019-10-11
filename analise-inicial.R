@@ -1,10 +1,13 @@
 install.packages("readr")
 install.packages("dplyr")
 install.packages("tidyverse")
+install.packages("DescTools")
 
 library(readr)
 library(dplyr)
 library(tidyverse)
+library(stats)
+library(DescTools)
 
 dados = read.csv2("./dados/atrasadas-paralisadas copy.csv", stringsAsFactors = F)
 dados$valor_total_pago = as.numeric(dados$valor_total_pago)
@@ -28,6 +31,21 @@ congelado = valor_inicial_total - gastos_totais
 
 # Total de obras
 total_obras = length(dados$descricao_obra)
+
+# Obras que passaram do valor previsto
+obras_passaram_valor = dados %>% filter(valor_total_pago > valor_inicial_contrato)
+total_obras_passaram_valor = length(obras_passaram_valor$descricao_obra)
+
+obras_passaram_valor$gasto_nao_previsto = obras_passaram_valor$valor_total_pago - obras_passaram_valor$valor_inicial_contrato
+gastos_por_cidade = aggregate(obras_passaram_valor$gasto_nao_previsto, by=list(municipio=obras_passaram_valor$municipio_nome), FUN=sum)
+
+# Municípios com mais obras não-entregues
+municipios_prejudicados = table(dados$municipio_nome)
+municipios_prejudicados = as.data.frame(municipios_prejudicados)
+municipios_prejudicados = municipios_prejudicados %>% arrange(desc(Freq))
+colnames(municipios_prejudicados) = c("Município", "Obras não-entregues")
+
+# Empresas com mais obras não-entregues
 
 
 
