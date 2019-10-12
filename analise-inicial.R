@@ -80,3 +80,7 @@ comparacao_entregas = full_join(empresas_que_atrasam, empresas_que_concluem)
 comparacao_entregas[is.na(comparacao_entregas)] <- 0
 comparacao_entregas$`Total de Obras` = comparacao_entregas$`Obras não-entregues` + comparacao_entregas$`Obras entregues`
 comparacao_entregas$`Taxa de Obras Não Entregues` = round((comparacao_entregas$`Obras não-entregues` / comparacao_entregas$`Total de Obras`) * 100, 2)
+
+
+# Dados sumarizados
+sumarizados = read.csv("./dados-extraidos/sumarizados.csv", stringsAsFactors = F)
