@@ -57,7 +57,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #f7f7f7; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -8138,7 +8138,7 @@ body {
   font-size: 17px;
   line-height: 1.8;
   font-weight: 400;
-  color: #999999; }
+  color: black; }
   body.menu-show {
     overflow: hidden;
     position: fixed;
@@ -9848,3 +9848,46 @@ textarea.form-control {
 a {
   color: white !important;
 }
+
+* {
+  font-family: sans-serif !important;
+  line-height: 1.4;
+}
+
+.header-section-info {
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.subheader-section-info {
+  font-weight: regular;
+  font-size: 3vh;
+}
+
+body {
+  background-color: #f7f7f7;
+}
+
+section .container:first-child {
+  padding-top: 70px;
+}
+
+@media(max-width: 800px) {
+  .text-main-big {
+    font-size: 4vh;
+    padding-bottom: 15px;
+  }
+  
+  .text-submain-big {
+    font-size: 2vh;
+  }
+
+  .container-texts {
+    margin-top: -25vh;
+  }
+
+  section .container:first-child {
+    padding-top: 120px;
+  }
+}
+
