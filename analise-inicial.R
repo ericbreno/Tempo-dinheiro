@@ -84,3 +84,14 @@ comparacao_entregas$`Taxa de Obras Não Entregues` = round((comparacao_entregas$
 
 # Dados sumarizados
 sumarizados = read.csv("./dados-extraidos/sumarizados.csv", stringsAsFactors = F)
+
+# Gerando csvs
+write_csv(atrasadas, "obras_atrasadas.csv")
+write_csv(paralisadas, "obras_paralisadas.csv")
+write_csv(gastos_por_cidade, "gastos_extras_por_cidade.csv")
+write_csv(obras_passaram_valor, "obras_passaram_valor.csv")
+write_csv(tipo_obra, "tipo_obras_nao_entregues.csv")
+write_csv(comparacao_entregas, "comparacao_entregas_empresas.csv")
+write_csv(comparacao_municipios, "comparacao_entregas_municipios.csv")
+write_csv(sumarizados, "porcentagem_conclusao.csv")
+
