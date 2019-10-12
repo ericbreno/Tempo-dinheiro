@@ -1,0 +1,23 @@
+Atributo,Descrição
+id_mun,código do município - IBGE
+nome_mun,nome do município
+id_est,código do estado - IBGE
+nome_est,nome do estado
+esfera/ambito,esfera responsável pela obra (municipal ; estadual ; federal)
+empresa_contratada,nome da empresa contratada
+cnpj_contratada,cnpj da empresa contratada
+contratante,quem contrataou a obra
+classificacao_obra,classificação da obra por área( mobilidade ; saúde ; etc)
+descricao_obra,descrição da obra 
+endereco_obra,endereço da obra
+data_prevista_inicio,data prevista para início da obra
+data_inicio,data efetiva em que a obra iniciou
+data_prevista_conclusao,data prevista para conclusão da obra
+data_conclusao,data efetiva de conclusão da obra
+status,atual status da obra (atrasada ; paralizada ; em andamento ; concluída) 
+data_inicio_paralizacao,"caso paralizada, data de inicio da paralização "
+motivo_paralizacao,motivo pelo qual obra foi paralizada
+data_retorno_paralizacao,"caso a obra paralizada tenha retornado, data de reinicio da obra"
+valor_inicial_contrato,valor inicial previsto no contrato 
+valor_total_pago,valor total pago pela obra
+contrato,link para o contrato / licitação da obra
