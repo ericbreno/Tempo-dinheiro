@@ -9,7 +9,7 @@ library(tidyverse)
 library(stats)
 library(DescTools)
 
-dados = read.csv2("./dados/atrasadas-paralisadas copy.csv", stringsAsFactors = F)
+dados = read.csv("./atrasadas-paralisadas copy (copy).csv", stringsAsFactors = F)
 dados$valor_total_pago = as.numeric(dados$valor_total_pago)
 dados$valor_inicial_contrato = as.numeric(dados$valor_inicial_contrato)
 
@@ -45,7 +45,10 @@ municipios_prejudicados = as.data.frame(municipios_prejudicados)
 municipios_prejudicados = municipios_prejudicados %>% arrange(desc(Freq))
 colnames(municipios_prejudicados) = c("Município", "Obras não-entregues")
 
-# Empresas com mais obras não-entregues
-
+# Tipo de obra com mais atrasos
+tipo_obra = table(dados$classificacao)
+tipo_obra = as.data.frame(tipo_obra)
+tipo_obra = tipo_obra %>% arrange(desc(Freq))
+colnames(tipo_obra) = c("Classificação", "Obras não-entregues")
 
 
