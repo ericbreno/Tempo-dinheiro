@@ -9813,7 +9813,7 @@ textarea.form-control {
   left: calc(50% - 61px);
 }
 
-.scroll-down-button:hover {
+.scroll-down-button-block:hover, .scroll-down-button:hover {
   cursor: pointer;
 }
 
@@ -9828,19 +9828,19 @@ textarea.form-control {
   100%     {bottom:0vh;}
 }
 
-.scroll-down-button div {
+.scroll-down-button div, .scroll-down-button-block div {
   height: 4px;
   width: 50px;
   display: inline-block;
   background-color: #FF8B00;
 }
 
-.scroll-down-button div:first-child {
+.scroll-down-button div:first-child, .scroll-down-button-block div:first-child {
   transform: rotate(30deg);
   margin-right: -6px;
 }
 
-.scroll-down-button div:last-child {
+.scroll-down-button div:last-child, .scroll-down-button-block div:last-child {
   transform: rotate(-30deg);
   margin-left: -7px;
 }
@@ -9897,11 +9897,11 @@ section .container:first-child {
 
 .black-container {
   position: relative;
-  height: 100vh;
+  height: 130vh;
   align-items: center;
   align-content: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .background-underlay {
@@ -9959,9 +9959,13 @@ body {
 }
 
 .info-image {
-  height: 30vh;
+  height: 22vh;
 }
 
-.smoked-subhead {
-  color: #707070;
+.smoked-subhead, .smoked-subhead a {
+  color: #707070 !important;
+}
+
+.smoked-subhead a {
+  text-decoration: underline;
 }
