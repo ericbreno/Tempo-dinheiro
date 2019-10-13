@@ -9055,7 +9055,7 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
-  background: white;
+  background: transparent;
   padding: 7em 0;
   z-index: 0;
   position: relative; }
@@ -9067,7 +9067,7 @@ textarea.form-control {
     bottom: 0;
     content: '';
     opacity: .7;
-    background: #fff; }
+    background: transparent; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }
@@ -9872,6 +9872,61 @@ section .container:first-child {
   padding-top: 70px;
 }
 
+.image-dev {
+  width: fit-content;
+  padding-bottom: 5px;
+}
+
+.dev-links a {
+  color: #717171 !important;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.dev-links a img {
+  height: 20px;
+  margin-top: -4px;
+}
+
+.image-dev img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid gray;
+}
+
+.black-container {
+  position: relative;
+}
+
+.background-underlay {
+  position: absolute;
+  width: calc(100vw + 400px);
+  height: 100%;
+  background-color: black;
+  left: -400px;
+  z-index: -1;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.outer-wrapper-iframe-sm {
+  height: 450px;
+  overflow-y: hidden;
+}
+
+.outer-wrapper-iframe-md {
+  height: 630px;
+  overflow-y: hidden;
+}
+
+.inner-wrapper-iframe {
+  height: 700px;
+}
+
 @media(max-width: 800px) {
   .text-main-big {
     font-size: 4vh;
@@ -9889,5 +9944,12 @@ section .container:first-child {
   section .container:first-child {
     padding-top: 120px;
   }
-}
 
+  .outer-wrapper-iframe-md {
+    height: 220px;
+  }
+
+  .outer-wrapper-iframe-sm {
+    height: 160px;
+  }
+}
