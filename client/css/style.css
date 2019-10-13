@@ -9855,13 +9855,12 @@ a {
 }
 
 .header-section-info {
-  font-size: 4vh;
+  font-size: 3.4vh;
   font-weight: bold;
 }
 
 .subheader-section-info {
-  font-weight: regular;
-  font-size: 3vh;
+  font-size: 2.6vh;
 }
 
 body {
@@ -9898,6 +9897,11 @@ section .container:first-child {
 
 .black-container {
   position: relative;
+  height: 100vh;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .background-underlay {
@@ -9952,4 +9956,12 @@ body {
   .outer-wrapper-iframe-sm {
     height: 160px;
   }
+}
+
+.info-image {
+  height: 30vh;
+}
+
+.smoked-subhead {
+  color: #707070;
 }
